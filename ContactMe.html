@@ -3,70 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video and Feedback Form</title>
+    <title>Contact Me</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://www.youtube.com/watch?v=-ibLmPuojmw" rel="stylesheet">
     <style>
-        .form-container {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
+        body {
+            padding-top: 56px; /* Prevent content from hiding under the fixed navbar */
+        }
+        .video-frame {
             border: 1px solid #ddd;
             border-radius: 5px;
-        }
-        textarea {
-            width: 100%;
-            height: 150px; 
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
+            overflow: hidden;
         }
     </style>
 </head>
 <body>
 
-<div class="myVideo">
-    <h2>Watch Our Video</h2>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/fEOZvf4Lr-M?si=XinvRSQGAtZ8KGOK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">My Website</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Feedback Form</h2>
+            <form method="POST" action="your-server-endpoint">
+                <div class="form-group">
+                    <label for="fname">First Name:</label>
+                    <input type="text" id="fname" name="fname" class="form-control" placeholder="Anonymous" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="lname">Last Name:</label>
+                    <input type="text" id="lname" name="lname" class="form-control" placeholder="Anonymous" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mail">Email:</label>
+                    <input type="email" id="mail" name="mail" class="form-control" placeholder="name@domain.com" required>
+                </div>
+                
+                <fieldset class="form-group">
+                    <legend>Will you recommend this website?</legend>
+                    <div class="form-check">
+                        <input type="radio" name="recommend" class="form-check-input" value="yes" required>
+                        <label class="form-check-label">Yes</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="recommend" class="form-check-input" value="no" required>
+                        <label class="form-check-label">No</label>
+                    </div>
+                </fieldset>
+
+                <div class="form-group">
+                    <label for="favorite-website">Favorite Website:</label>
+                    <select id="favorite-website" name="favorite-website" class="form-control" required>
+                        <option value="">Select your favorite</option>
+                        <option value="Google">Google</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="Twitter">Twitter</option>
+                        <option value="Time">Time</option>
+                        <option value="Instagram">Instagram</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="rating">Rate our website (1 to 10):</label>
+                    <input type="range" id="rating" name="rating" class="form-range" min="1" max="10" value="5" required>
+                    <small class="form-text text-muted">Please rate our service.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="comments">Additional Comments:</label>
+                    <textarea id="comments" name="comment" class="form-control" placeholder="Enter your comments here" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <h2>Watch Our Video</h2>
+            <div class="video-frame">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/fEOZvf4Lr-M?si=XinvRSQGAtZ8KGOK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
 </div>
 
-<!-- The form fill-out -->
-<div class="form-container">
-    <form>
-        <label for="fs">First name:</label>
-        <input type="text" id="fs" name="fs" placeholder="Anonymous" required>
-        
-        <label for="ln">Last name:</label>
-        <input type="text" id="ln" name="ln" placeholder="Anonymous" required>
-        
-        <label for="mail">Email:</label>
-        <input type="email" id="mail" name="mail" placeholder="name@domain.com">
-        
-        <!-- Yes or no -->
-        <p>Will you recommend our website?</p>
-        <label>Yes: <input type="radio" name="recommend" value="yes" required></label>
-        <label>No: <input type="radio" name="recommend" value="no" required></label>
-
-        <!-- Favorite Website -->
-        <p>What is your favorite Website?</p>
-        <select id="browser" name="browser" required>
-            <option value="Google">Google</option>
-            <option value="Facebook">Facebook</option>
-            <option value="Twitter">Twitter</option>
-            <option value="YouTube">YouTube</option>
-        </select>
-        
-        <p>Please consider rating our website on a scale of 1-10</p>
-        <label for="rating">Rating:</label>
-        <input type="range" id="rating" name="rating" min="1" max="10"> 
-
-        <!-- Comments -->
-        <p>Please write any additional comments:</p>
-        <label for="comments">Comments:</label>
-        <textarea id="comments" name="comments" placeholder="Enter your comments here" required></textarea>
-        
-        <button type="submit">Submit</button>
-    </form>
-</div>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
